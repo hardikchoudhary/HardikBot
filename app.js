@@ -174,7 +174,8 @@ bot = new builder.UniversalBot(connector, function (session) {
                         session.send(reply);
                     });
                 if (error) throw error;
-                session.send("Sorry I could not find any nearest metro station from "+nearfromPlace +" I will come back to you If I find any results for you. Happy joruney");
+                session.send("Sorry I could not find any nearest metro station from "+nearfromPlace +" I will come back to you If I find any results for you. Happy journey.");
+                session.send("Please message me like from anyplace city. Ex From GIP Noida")
                 
             });
         });
