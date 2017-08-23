@@ -116,29 +116,35 @@ bot = new builder.UniversalBot(connector, function (session) {
             };
 
             placeSearch(parameters, function (error, response) {
-                resultsMetroName = [];
-                for (var i = 0; i < response.results.length; i++) {
-                    resultsMetroName.push(response.results[i].name);
-                }
-                var org = [resultsMetroName[0] + "Metro", resultsMetroName[1] + "Metro", resultsMetroName[2] + "Metro"];
-                distance.get(
-                    {
-                        origins:
-                        org,
-                        destinations: [nearfromPlace]
-                    },
-                    function (err, data) {
-                        if (err) return console.log(err);
-                        returningResultKeyval = [];
-                        
-                        //if(data==null){}
 
-                        //if (resultsMetroName[0].length <= 0) {
+                if (response.results.length > 0) {
+
+                  
+
+                    resultsMetroName = [];
+
+                    for (var i = 0; i < response.results.length; i++) {
+                        resultsMetroName.push(response.results[i].name);
+                    }
+                    var org = [resultsMetroName[0] + "Metro", resultsMetroName[1] + "Metro", resultsMetroName[2] + "Metro"];
+                    distance.get(
+                        {
+                            origins:
+                            org,
+                            destinations: [nearfromPlace]
+                        },
+                        function (err, data) {
+                            if (err) return console.log(err);
+                            returningResultKeyval = [];
+
+                            //if(data==null){}
+
+                            //if (resultsMetroName[0].length <= 0) {
 
                             //session.send("Sorry I could not find any nearest metro station from " + nearfromPlace + " I will come back to you If I find any results for you. Happy journey.");
                             //session.send("Please message me like from anyplace city. Ex From GIP Noida");
-                       // }
-                     //   else {
+                            // }
+                            //   else {
 
                             var cards = [new builder.HeroCard(session)
                                 .title('Nearest Metro Station')
@@ -181,11 +187,17 @@ bot = new builder.UniversalBot(connector, function (session) {
                                 .attachmentLayout(builder.AttachmentLayout.carousel)
                                 .attachments(cards);
                             session.send(reply);
-                       // }
+                            // }
                         });
-                    
-                if (error) throw error;
-                assert.notEqual(response.results.length, 0, "Ranked place search must not return 0 results");
+
+                    if (error) throw error;
+                    assert.notEqual(response.results.length, 0, "Ranked place search must not return 0 results");
+                }
+                else {
+
+                    session.send("Sorry I could not find any nearest metro station from " + nearfromPlace + " I will come back to you If I find any results for you. Happy journey.");
+                    session.send("Please message me like from anyplace city. Ex From GIP Noida");
+                }
             });
 
         });
