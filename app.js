@@ -282,7 +282,7 @@ bot = new builder.UniversalBot(connector, function (session) {
                                 .subtitle('Station Name: ' + resultsMetroName[0] + ' Distance:' + data[0].distance)
                                 .text('Results shown are shown in order of nearest station , you can click on get route to get complete Metro Route ex. Where you have to change and on which line you have to go')
                                 .images([
-                                    builder.CardImage.create(session, 'http://uptunotes.com/wp-content/uploads/2016/06/dmrc.jpg')
+                                    builder.CardImage.create(session, 'http://timesofindia.indiatimes.com/photo/msid-59674291/59674291.jpg')
                                 ])
                                 .buttons([
                                     builder.CardAction.postBack(session, "Get Route Details:" + resultsMetroName[0], "Get Route")
@@ -294,7 +294,7 @@ bot = new builder.UniversalBot(connector, function (session) {
                                     .subtitle('Station Name: ' + resultsMetroName[1] + ' Distance:' + data[1].distance)
                                     .text('Results shown are shown in order of nearest station , you can click on get route to get complete Metro Route ex. Where you have to change and on which line you have to go')
                                     .images([
-                                        builder.CardImage.create(session, 'http://uptunotes.com/wp-content/uploads/2016/06/dmrc.jpg')
+                                        builder.CardImage.create(session, 'http://timesofindia.indiatimes.com/photo/msid-59674291/59674291.jpg')
                                     ])
                                     .buttons([
                                         builder.CardAction.postBack(session, "Get Route Details:" + resultsMetroName[1], "Get Route")
@@ -306,7 +306,7 @@ bot = new builder.UniversalBot(connector, function (session) {
                                     .text('Results shown are shown in order of nearest station , you can click on get route to get complete Metro Route ex. Where you have to change and on which line you have to go')
                                     .images([
 
-                                        builder.CardImage.create(session, 'http://uptunotes.com/wp-content/uploads/2016/06/dmrc.jpg')
+                                        builder.CardImage.create(session, 'http://timesofindia.indiatimes.com/photo/msid-59674291/59674291.jpg')
                                     ])
                                     .buttons([
 
