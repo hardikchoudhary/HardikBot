@@ -261,7 +261,7 @@ bot = new builder.UniversalBot(connector, function (session) {
     .subtitle('Select any to get more details')
     .images([
         new builder.CardImage(session)
-            .url(''https://placeholdit.imgix.net/~text?txtsize=56&txt=Contoso%20Flowers&w=640&h=330'')
+            .url('https://placeholdit.imgix.net/~text?txtsize=56&txt=Contoso%20Flowers&w=640&h=330')
             .alt('Nearest Metro Stations')
     ])
     .buttons([
