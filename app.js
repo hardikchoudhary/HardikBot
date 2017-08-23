@@ -134,6 +134,7 @@ if(resultsMetroname[0].length<=0){
         session.send("Sorry I could not find any nearest metro station from "+nearfromPlace +" I will come back to you If I find any results for you. Happy journey.");
                 session.send("Please message me like from anyplace city. Ex From GIP Noida");
    }
+                        else{
                         var cards = [new builder.HeroCard(session)
                             .title('Nearest Metro Station')
                             .subtitle('Station Name: ' + resultsMetroName[0] + ' Distance:' + data[0].distance)
@@ -176,6 +177,7 @@ if(resultsMetroname[0].length<=0){
                             .attachments(cards);
                         session.send(reply);
                     });
+                    }
                 if (error) throw error;
            
                 
