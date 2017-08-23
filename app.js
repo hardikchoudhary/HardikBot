@@ -91,7 +91,7 @@ bot = new builder.UniversalBot(connector, function (session) {
 
         //"2017-06-18T11:58:26+05:30"
         var messageTiming = session.message.timestamp;
-        session.send("Hi " + session.message.user.name + ", " + greeting + " I am getting the near by metro station from: %s", nearfromPlace);
+        session.send("Hi " + session.message.user.name + ", " + greeting + " I am getting nearby metro station from: %s", nearfromPlace);
         var options = {
             provider: 'google',
 
@@ -130,58 +130,62 @@ bot = new builder.UniversalBot(connector, function (session) {
                     function (err, data) {
                         if (err) return console.log(err);
                         returningResultKeyval = [];
-if(resultsMetroname[0].length<=0){
-        session.send("Sorry I could not find any nearest metro station from "+nearfromPlace +" I will come back to you If I find any results for you. Happy journey.");
-                session.send("Please message me like from anyplace city. Ex From GIP Noida");
-   }
-                        else{
-                        var cards = [new builder.HeroCard(session)
-                            .title('Nearest Metro Station')
-                            .subtitle('Station Name: ' + resultsMetroName[0] + ' Distance:' + data[0].distance)
-                            .text('Results shown are shown in order of nearest station , you can click on get route to get complete Metro Route ex. Where you have to change and on which line you have to go')
-                            .images([
-                                builder.CardImage.create(session, 'http://uptunotes.com/wp-content/uploads/2016/06/dmrc.jpg')
-                            ])
-                            .buttons([
-                                builder.CardAction.postBack(session, "Get Route Details:" + resultsMetroName[0], "Get Route")
-                                //builder.CardAction.openUrl(session, 'https://docs.microsoft.com/bot-framework/', 'Get Route')
-                            ]),
 
-                            new builder.HeroCard(session)
+                        if (resultsMetroName[0].length <= 0) {
+
+                            session.send("Sorry I could not find any nearest metro station from " + nearfromPlace + " I will come back to you If I find any results for you. Happy journey.");
+                            session.send("Please message me like from anyplace city. Ex From GIP Noida");
+                        }
+                        else {
+
+                            var cards = [new builder.HeroCard(session)
                                 .title('Nearest Metro Station')
-                                .subtitle('Station Name: ' + resultsMetroName[1] + ' Distance:' + data[1].distance)
+                                .subtitle('Station Name: ' + resultsMetroName[0] + ' Distance:' + data[0].distance)
                                 .text('Results shown are shown in order of nearest station , you can click on get route to get complete Metro Route ex. Where you have to change and on which line you have to go')
                                 .images([
                                     builder.CardImage.create(session, 'http://uptunotes.com/wp-content/uploads/2016/06/dmrc.jpg')
                                 ])
                                 .buttons([
-                                    builder.CardAction.postBack(session, "Get Route Details:" + resultsMetroName[1], "Get Route")
+                                    builder.CardAction.postBack(session, "Get Route Details:" + resultsMetroName[0], "Get Route")
                                     //builder.CardAction.openUrl(session, 'https://docs.microsoft.com/bot-framework/', 'Get Route')
                                 ]),
-                            new builder.HeroCard(session)
-                                .title('Nearest Metro Station')
-                                .subtitle('Station Name: ' + resultsMetroName[2] + ' Distance:' + data[2].distance)
-                                .text('Results shown are shown in order of nearest station , you can click on get route to get complete Metro Route ex. Where you have to change and on which line you have to go')
-                                .images([
 
-                                    builder.CardImage.create(session, 'http://uptunotes.com/wp-content/uploads/2016/06/dmrc.jpg')
-                                ])
-                                .buttons([
+                                new builder.HeroCard(session)
+                                    .title('Nearest Metro Station')
+                                    .subtitle('Station Name: ' + resultsMetroName[1] + ' Distance:' + data[1].distance)
+                                    .text('Results shown are shown in order of nearest station , you can click on get route to get complete Metro Route ex. Where you have to change and on which line you have to go')
+                                    .images([
+                                        builder.CardImage.create(session, 'http://uptunotes.com/wp-content/uploads/2016/06/dmrc.jpg')
+                                    ])
+                                    .buttons([
+                                        builder.CardAction.postBack(session, "Get Route Details:" + resultsMetroName[1], "Get Route")
+                                        //builder.CardAction.openUrl(session, 'https://docs.microsoft.com/bot-framework/', 'Get Route')
+                                    ]),
+                                new builder.HeroCard(session)
+                                    .title('Nearest Metro Station')
+                                    .subtitle('Station Name: ' + resultsMetroName[2] + ' Distance:' + data[2].distance)
+                                    .text('Results shown are shown in order of nearest station , you can click on get route to get complete Metro Route ex. Where you have to change and on which line you have to go')
+                                    .images([
 
-                                    builder.CardAction.postBack(session, "Get Route Details:" + resultsMetroName[1], "Get Route")
-                                    //builder.CardAction.openUrl(session, 'https://docs.microsoft.com/bot-framework/', 'Get Route')
-                                ])
-                        ]
-                        var reply = new builder.Message(session)
-                            .attachmentLayout(builder.AttachmentLayout.carousel)
-                            .attachments(cards);
-                        session.send(reply);
-                    });
-                    }
+                                        builder.CardImage.create(session, 'http://uptunotes.com/wp-content/uploads/2016/06/dmrc.jpg')
+                                    ])
+                                    .buttons([
+
+                                        builder.CardAction.postBack(session, "Get Route Details:" + resultsMetroName[1], "Get Route")
+                                        //builder.CardAction.openUrl(session, 'https://docs.microsoft.com/bot-framework/', 'Get Route')
+                                    ])
+                            ]
+                            var reply = new builder.Message(session)
+                                .attachmentLayout(builder.AttachmentLayout.carousel)
+                                .attachments(cards);
+                            session.send(reply);
+                        }
+                        });
+                    
                 if (error) throw error;
-           
-                
+                assert.notEqual(response.results.length, 0, "Ranked place search must not return 0 results");
             });
+
         });
     }
 });
