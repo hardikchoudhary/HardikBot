@@ -261,12 +261,12 @@ bot = new builder.UniversalBot(connector, function (session) {
     .subtitle('Select any to get more details')
     .images([
         new builder.CardImage(session)
-            .url('')
+            .url(''https://placeholdit.imgix.net/~text?txtsize=56&txt=Contoso%20Flowers&w=640&h=330'')
             .alt('Nearest Metro Stations')
     ])
     .buttons([
-        builder.CardAction.imBack(session, session.gettext('Station Name: ' + resultsMetroName[0] + ' Distance:' + data[0].distance), 'Station Name: ' + resultsMetroName[0] + ' Distance:' + data[0].distance),
-        builder.CardAction.imBack(session, session.gettext('Station Name: ' + resultsMetroName[0] + ' Distance:' + data[0].distance), 'Station Name: ' + resultsMetroName[0] + ' Distance:' + data[0].distance)
+        builder.CardAction.imBack(session, session.gettext(resultsMetroName[0] + ' Distance:' + data[0].distance),  resultsMetroName[0] + ' Distance:' + data[0].distance),
+        builder.CardAction.imBack(session, session.gettext(resultsMetroName[0] + ' Distance:' + data[0].distance), resultsMetroName[0] + ' Distance:' + data[0].distance)
     ]);
 
                             session.send(new builder.Message(session).addAttachment(welcomeCard));
