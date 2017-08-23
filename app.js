@@ -199,7 +199,7 @@ bot = new builder.UniversalBot(connector, function (session) {
 
 
 
-                            session.send(message);
+                            //session.send(message);
 
                             var cards = [new builder.HeroCard(session)
                                 .title('Nearest Metro Station')
