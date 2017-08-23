@@ -155,58 +155,107 @@ bot = new builder.UniversalBot(connector, function (session) {
                             // };
 
                             var msg = new builder.Message(session).addAttachment({
-       
+        contentType: "application/vnd.microsoft.card.adaptive",
+        content: {
+            type: "AdaptiveCard",
+            speak: "<s>Your  meeting about \"Nearest Metro Stations List\"<break strength='weak'/></s><s>Do you want to get route or only distance</s>",
+            body: [
+                 {
+                     "type": "TextBlock",
+                     "text": "Nearest Metro Stations List",
+                     "size": "large",
+                     "weight": "bolder"
+                 },
+                  {
+                      "type": "TextBlock",
+                      "text": "Nearest Metro Stations List",
+                      "size": "medium",
+                      "weight": "bolder"
+                  },
+            ],
+            "actions": [
+                {
+                    "type": "Action.Http",
+                    "method": "POST",
+                    "url": "http://foo.com",
+                    "title": "Station-"+resultsMetroName[0] +" Distance-" + data[0].distance
+                },
+                {
+                    "type": "Action.Http",
+                    "method": "POST",
+                    "url": "http://foo.com",
+                    "title": "Station-" + resultsMetroName[1] + " Distance-" + data[1].distance
+                },
+                {
+                    "type": "Action.Http",
+                    "method": "POST",
+                    "url": "http://foo.com",
+                    "title": "Station-" + resultsMetroName[2] + " Distance-" + data[2].distance
+                }
+            ]
+        }
                             });
 
 
 
+                            session.send("Adaptive");
 
+                            session.send(msg);
                             var card = {
-                                contentType: "application/vnd.microsoft.card.adaptive",
-                                content: {
-                                    type: "AdaptiveCard",
-                                    speak: "<s>Your  meeting about \"Nearest Metro Stations List\"<break strength='weak'/></s><s>Do you want to get route or only distance</s>",
-                                    body: [
-                                         {
-                                             "type": "TextBlock",
-                                             "text": "Nearest Metro Stations List",
-                                             "size": "large",
-                                             "weight": "bolder"
-                                         },
-                                          {
-                                              "type": "TextBlock",
-                                              "text": "Nearest Metro Stations List",
-                                              "size": "medium",
-                                              "weight": "bolder"
-                                          },
-                                    ],
-                                    "actions": [
+                                'contentType': 'application/vnd.microsoft.card.adaptive',
+                                'content': {
+                                    '$schema': 'http://adaptivecards.io/schemas/adaptive-card.json',
+                                    'type': 'AdaptiveCard',
+                                    'version': '1.0',
+                                    'body': [
                                         {
-                                            "type": "Action.Http",
-                                            "method": "POST",
-                                            "url": "http://foo.com",
-                                            "title": "Station-" + resultsMetroName[0] + " Distance-" + data[0].distance
-                                        },
-                                        {
-                                            "type": "Action.Http",
-                                            "method": "POST",
-                                            "url": "http://foo.com",
-                                            "title": "Station-" + resultsMetroName[1] + " Distance-" + data[1].distance
-                                        },
-                                        {
-                                            "type": "Action.Http",
-                                            "method": "POST",
-                                            "url": "http://foo.com",
-                                            "title": "Station-" + resultsMetroName[2] + " Distance-" + data[2].distance
+                                            'type': 'Container',
+                                            'speak': '<s>Nearest Metro Stations</s><s></s>',
+                                            'items': [
+                                                {
+                                                    'type': 'ColumnSet',
+                                                    'columns': [
+                                                        {
+                                                            'type': 'Column',
+                                                            'size': 'auto',
+                                                            'items': [
+                                                                {
+                                                                    'type': 'Image',
+                                                                    'url': 'https://placeholdit.imgix.net/~text?txtsize=65&txt=Adaptive+Cards&w=300&h=300',
+                                                                    'size': 'medium',
+                                                                    'style': 'person'
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            'type': 'Column',
+                                                            'size': 'stretch',
+                                                            'items': [
+                                                                {
+                                                                    'type': 'TextBlock',
+                                                                    'text': 'Hello!',
+                                                                    'weight': 'bolder',
+                                                                    'isSubtle': true
+                                                                },
+                                                                {
+                                                                    'type': 'TextBlock',
+                                                                    'text': 'Are you looking for a flight or a hotel?',
+                                                                    'wrap': true
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
                                         }
-                                    ]
+                                    ],
+                                    'actions': [ /* */]
                                 }
                             };
 
 
 
 
-                            session.send(card);
 
                             var cards = [new builder.HeroCard(session)
                                 .title('Nearest Metro Station')
