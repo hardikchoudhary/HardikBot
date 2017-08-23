@@ -145,6 +145,15 @@ bot = new builder.UniversalBot(connector, function (session) {
                             //session.send("Please message me like from anyplace city. Ex From GIP Noida");
                             // }
                             //   else {
+                            
+                              
+                            var tableHTML = '<table style="padding:10px;border:1px solid black;"><tr style="background-color:#c6c6c6"><th>Station Name</th><th>Distance</th><th></tr><tr><td>' + resultsMetroName[0] + '</td><td>' + data[0].distance + '</td></tr><tr><td>' + resultsMetroName[0] + '</td><td>' + data[0].distance + '</td></tr>';
+                                var message = {
+                                    type: 'message',
+                                    textFormat: 'xml',
+                                    text: tableHTML
+                                };
+                                session.send(message);
 
                             var cards = [new builder.HeroCard(session)
                                 .title('Nearest Metro Station')
