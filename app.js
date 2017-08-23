@@ -35,7 +35,7 @@ var greeting = "Hope You are good";
 
 
 bot.dialog('greeting', function (session, args) {
-    session.send("Hello hope you are good ,Please start finding nearest metro by messaging me 'from PlaceName City' like  Ex1 'from gip noida', Ex2  frm akshardham");
+    session.send("Hello hope you are good ,Please start finding nearest metro by messaging me 'from PlaceName City' like  Example 'from gip noida', Example  frm akshardham delhi");
     greeting = "";
 }).triggerAction({
     matches: 'greeting'
@@ -49,8 +49,8 @@ bot = new builder.UniversalBot(connector, function (session) {
     // }
     if (!(session.message.text.toLowerCase().includes("from") || session.message.text.toLowerCase().includes("frm"))) {
 
-        if (!session.message.text.toLowerCase().includes("get route details")) {
-            session.send("Hello hope you are good ,Please start finding nearest metro by messaging me 'from PlaceName City' like  Ex1 'from gip noida', Ex2  frm akshardham");
+        if (!session.message.text.toLowerCase().includes("get route details")) { 
+            session.send("Hello hope you are good ,Please start finding nearest metro by messaging me 'from PlaceName City' like  Example 'from gip noida', Example  frm akshardham delhi");
         }
     }
 
@@ -119,7 +119,7 @@ bot = new builder.UniversalBot(connector, function (session) {
 
                 if (response.results.length > 0) {
 
-                  
+
 
                     resultsMetroName = [];
 
@@ -145,15 +145,15 @@ bot = new builder.UniversalBot(connector, function (session) {
                             //session.send("Please message me like from anyplace city. Ex From GIP Noida");
                             // }
                             //   else {
-                            
-                              
-                            var tableHTML = '<table style="padding:10px;border:1px solid black;"><tr style="background-color:#c6c6c6"><th>Station Name</th><th>Distance</th><th></tr><tr><td>' + resultsMetroName[0] + '</td><td>' + data[0].distance + '</td></tr><tr><td>' + resultsMetroName[0] + '</td><td>' + data[0].distance + '</td></tr>';
-                                var message = {
-                                    type: 'message',
-                                    textFormat: 'xml',
-                                    text: tableHTML
-                                };
-                                session.send(message);
+
+
+                            var tableHTML = '<table style="padding:10px;border:1px solid black;"><tr style="background-color:#c6c6c6"><th>Station Name</th><th>Distance</th><th></tr><tr><td>' + resultsMetroName[0] + '</td><td>' + data[0].distance + '</td></tr><tr><td>' + resultsMetroName[0] + '</td><td>' + data[0].distance + '</td></tr></table>';
+                            var message = {
+                                type: 'message',
+                                textFormat: 'xml',
+                                text: tableHTML
+                            };
+                            session.send(message);
 
                             var cards = [new builder.HeroCard(session)
                                 .title('Nearest Metro Station')
