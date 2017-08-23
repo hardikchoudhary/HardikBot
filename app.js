@@ -130,7 +130,10 @@ bot = new builder.UniversalBot(connector, function (session) {
                     function (err, data) {
                         if (err) return console.log(err);
                         returningResultKeyval = [];
-
+if(resultsMetroname[0]==null ||resultsMetroname[0]==undefined||resultsMetroname[0].length==0){
+        session.send("Sorry I could not find any nearest metro station from "+nearfromPlace +" I will come back to you If I find any results for you. Happy journey.");
+                session.send("Please message me like from anyplace city. Ex From GIP Noida");
+   }
                         var cards = [new builder.HeroCard(session)
                             .title('Nearest Metro Station')
                             .subtitle('Station Name: ' + resultsMetroName[0] + ' Distance:' + data[0].distance)
@@ -174,8 +177,7 @@ bot = new builder.UniversalBot(connector, function (session) {
                         session.send(reply);
                     });
                 if (error) throw error;
-                session.send("Sorry I could not find any nearest metro station from "+nearfromPlace +" I will come back to you If I find any results for you. Happy journey.");
-                session.send("Please message me like from anyplace city. Ex From GIP Noida")
+           
                 
             });
         });
