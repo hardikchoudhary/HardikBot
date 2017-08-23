@@ -91,7 +91,7 @@ bot = new builder.UniversalBot(connector, function (session) {
 
         //"2017-06-18T11:58:26+05:30"
         var messageTiming = session.message.timestamp;
-        session.send("Hi " + session.message.user.name + ", " + greeting + " I am gettinmg the near by metro station from: %s", nearfromPlace);
+        session.send("Hi " + session.message.user.name + ", " + greeting + " I am getting the near by metro station from: %s", nearfromPlace);
         var options = {
             provider: 'google',
 
@@ -130,7 +130,7 @@ bot = new builder.UniversalBot(connector, function (session) {
                     function (err, data) {
                         if (err) return console.log(err);
                         returningResultKeyval = [];
-if(resultsMetroname[0]==null ||resultsMetroname[0]==undefined||resultsMetroname[0].length==0){
+if(resultsMetroname[0].length<=0){
         session.send("Sorry I could not find any nearest metro station from "+nearfromPlace +" I will come back to you If I find any results for you. Happy journey.");
                 session.send("Please message me like from anyplace city. Ex From GIP Noida");
    }
