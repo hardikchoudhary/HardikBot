@@ -256,20 +256,20 @@ bot = new builder.UniversalBot(connector, function (session) {
 
                             //==========
 
-                            var welcomeCard = new builder.HeroCard(session)
-    .title('Nearest Metro Station List')
-    .subtitle('Select any to get more details')
-    .images([
-        new builder.CardImage(session)
-            .url('https://placeholdit.imgix.net/~text?txtsize=56&txt=Contoso%20Flowers&w=640&h=330')
-            .alt('Nearest Metro Stations')
-    ])
-    .buttons([
-        builder.CardAction.imBack(session, session.gettext(resultsMetroName[0] + ' Distance:' + data[0].distance),  resultsMetroName[0] + ' Distance:' + data[0].distance),
-        builder.CardAction.imBack(session, session.gettext(resultsMetroName[0] + ' Distance:' + data[0].distance), resultsMetroName[0] + ' Distance:' + data[0].distance)
-    ]);
+    //                        var welcomeCard = new builder.HeroCard(session)
+    //.title('Nearest Metro Station List')
+    //.subtitle('Select any to get more details')
+    //.images([
+    //    new builder.CardImage(session)
+    //        .url('https://placeholdit.imgix.net/~text?txtsize=56&txt=Contoso%20Flowers&w=640&h=330')
+    //        .alt('Nearest Metro Stations')
+    //])
+    //.buttons([
+      //builder.CardAction.imBack(session, session.gettext(resultsMetroName[0] + "Distance:" + data[0].distance),  resultsMetroName[0] + "Distance:" + data[0].distance),
+       //builder.CardAction.imBack(session, session.gettext(resultsMetroName[0] + ' Distance:' + data[0].distance), resultsMetroName[0] + ' Distance:' + data[0].distance)
+    //]);
 
-                            session.send(new builder.Message(session).addAttachment(welcomeCard));
+    //                        session.send(new builder.Message(session).addAttachment(welcomeCard));
 
 
 
